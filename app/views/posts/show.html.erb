@@ -1,9 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Link:</strong>
-  <%= @post.link %>
-</p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -11,9 +7,21 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
+  <strong>Link:</strong>
+  <%= @post.link %>
 </p>
 
+<p>
+  <strong>User:</strong>
+
+  <%= @post.user.user_name %>
+</p>
+
+<% @comments.each do |comment| %>
+<td> <%= comment.user.user_name %> </td>
+<td> <%= comment.body  %> </td>
+<% end %>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
+
 <%= link_to 'Back', posts_path %>

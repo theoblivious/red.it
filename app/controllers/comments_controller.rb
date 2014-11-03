@@ -21,7 +21,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.save
-    # respond_with(@comment)
+    current_user.comments << @comment
+    redirect_to posts_path
   end
 
   def update
