@@ -7,12 +7,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    # respond_with(@post)
+    @post= Post.find(params[:id])
+    @comments = @post.comments #limit comments here and put it in by descending order
+
   end
 
   def new
     @post = Post.new
-    # respond_with(@post)
+
   end
 
   def edit
@@ -20,13 +22,18 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    # respond_with(@post)
+    if @post.save
+      current_user.posts << @post
+      redirect_to posts_path
+    else
+      flash[:notice] = "Post did not save correctly "
+      render :new
+    end
   end
 
   def update
     @post.update(post_params)
-    # respond_with(@post)
+
   end
 
   def destroy
