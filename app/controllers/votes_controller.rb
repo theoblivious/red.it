@@ -3,16 +3,16 @@ class VotesController < ApplicationController
 
   def index
     @votes = Vote.all
-    respond_with(@votes)
+    # respond_with(@votes)
   end
 
   def show
-    respond_with(@vote)
+    # respond_with(@vote)
   end
 
   def new
     @vote = Vote.new
-    respond_with(@vote)
+    # respond_with(@vote)
   end
 
   def edit
@@ -21,17 +21,17 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new(vote_params)
     @vote.save
-    respond_with(@vote)
+    # respond_with(@vote)
   end
 
   def update
     @vote.update(vote_params)
-    respond_with(@vote)
+    # respond_with(@vote)
   end
 
   def destroy
     @vote.destroy
-    respond_with(@vote)
+    # respond_with(@vote)
   end
 
   private
